@@ -44,6 +44,7 @@ import           Text.Printf         (printf)
 mkValidator :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 mkValidator _ _ _ = ()
 
+-- takes the Haskell function (that gives the business logic of validation) and turns it into an actual validator by compiling into Plutus Core script
 validator :: Validator
 validator = mkValidatorScript $$(PlutusTx.compile [|| mkValidator ||])
 
